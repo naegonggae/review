@@ -13,8 +13,6 @@ import java.util.Optional;
 @Service
 public class TeacherService{
 
-    @Autowired
-    Calculator plus;
     /*
     public String world() {
         // controller에서 호출할때 exception이 발생할 수 있다.
@@ -30,7 +28,7 @@ public class TeacherService{
     }
 
      */
-
+/*
     public String world(String userName) {
         Optional<Teacher> teacherOptional = Optional.empty();
         //Java의 기능이 아닌 내
@@ -41,5 +39,16 @@ public class TeacherService{
         Teacher teacher = teacherOptional.orElseThrow(()->new RuntimeException("해당 선생님이 없습니다."));
 
         return String.valueOf(plus.calc(20, 30));
+    }
+
+ */
+    public String world(String userName) {
+        Optional<Teacher> teacherOptional = Optional.empty();
+
+        //HospitalException을 Throw할 때 HospitalException에 선언한 ErrorCode와 message를 전달 합니다.
+        Teacher teacher = teacherOptional.orElseThrow(()->
+                new HospitalException(ErrorCode.USERNAME_NOT_FOUND, "DB에 "+userName+"으로 검색 했을 때 빈 값이 아닙니다."));
+
+        return "world";
     }
 }

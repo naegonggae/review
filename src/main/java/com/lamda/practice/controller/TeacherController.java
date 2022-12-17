@@ -1,9 +1,7 @@
 package com.lamda.practice.controller;
 
 import com.lamda.practice.service.TeacherService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/teachers")
@@ -34,9 +32,9 @@ public class TeacherController {
 
  */
 
-    @GetMapping
-    public String get() {
-        String r = teacherService.world("");
-        return r;
+    @GetMapping("/{userName}")
+    public String get(@PathVariable String userName) {
+        String r = teacherService.world(userName);
+        return "world";
     }
 }

@@ -25,7 +25,11 @@ public class ExceptionManger { // 이름 상관없음
     @ExceptionHandler(HospitalException.class)
     public ResponseEntity<?> hospitalExceptionHandler(HospitalException hospitalException) {
         // 내가 만든 어플리케이션에서 특정 에러코드(숫자가 아니여도 됨)를 프론트엔드에게 알려주고 싶을때
+
+        //Enum으로 선언한 ErrorCode를 리턴하기 위해 getErrorCode.name()을 씁니다.
+        //“ “로 한칸 띄워주고
+        //앞에서 에러를 발생 시킬때 넣은 메세지를 뽑기 위해 hospitalException.getMessage()를 + 해줍니다.
         return ResponseEntity.status(hospitalException.getErrorCode().getHttpStatus())
-                .body(hospitalException.getErrorCode().getMessage());
+                .body(hospitalException.getErrorCode().name() + " " +hospitalException.getMessage());
     }
 }
