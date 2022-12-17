@@ -32,3 +32,10 @@ Service에서 Spring 종속성이 안들어가게 개발 해야 합니다.
 @Service
 @Component
 @controller
+
+- Spring ApplicationContext에 해당 return Class를 등록하겠다는 표시 입니다.
+- Factory 인터페이스 구현체 조립
+- @Configuration Factory → UserDao
+@Service → @Bean
+@Component → @Bean
+@Configuration →  @Bean
